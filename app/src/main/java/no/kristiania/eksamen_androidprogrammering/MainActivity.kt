@@ -1,6 +1,5 @@
 package no.kristiania.eksamen_androidprogrammering
 
-import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -16,30 +15,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
-        //findViewById<RecyclerView>(R.id.recyclerView_main).adapter = MainAdapter()
-
-        /*val exampleList = generateDummyList(500)
-
-        findViewById<RecyclerView>(R.id.recyclerView_main).adapter = ExampleAdapter(exampleList)
-        findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView_main).setHasFixedSize(true)*/
 
         fetchJson()
     }
 
-    /*private fun generateDummyList(size: Int): List<ExampleItem> {
-        val list = ArrayList<ExampleItem>()
-        for (i in 0 until size) {
-            val drawable = when (i % 3) {
-                0 -> R.drawable.ic_cash
-                1 -> R.drawable.ic_100
-                else -> R.drawable.ic_money_off
-            }
-            val item = ExampleItem(drawable, "Item $i", "Line 2")
-            list += item
-        }
-        return list
-    }*/
 
     fun fetchJson() {
         println("Attempting to fetch JSON")

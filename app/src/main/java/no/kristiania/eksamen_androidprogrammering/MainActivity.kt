@@ -1,5 +1,6 @@
 package no.kristiania.eksamen_androidprogrammering
 
+import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -14,16 +15,19 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Eksamen_Androidprogrammering)
         setContentView(R.layout.activity_main)
 
-        val exampleList = generateDummyList(500)
+        findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
+        //findViewById<RecyclerView>(R.id.recyclerView_main).adapter = MainAdapter()
 
-        findViewById<RecyclerView>(R.id.recycler_view).adapter = ExampleAdapter(exampleList)
-        findViewById<RecyclerView>(R.id.recycler_view).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recycler_view).setHasFixedSize(true)
+        /*val exampleList = generateDummyList(500)
 
-        //fetchJson()
+        findViewById<RecyclerView>(R.id.recyclerView_main).adapter = ExampleAdapter(exampleList)
+        findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
+        findViewById<RecyclerView>(R.id.recyclerView_main).setHasFixedSize(true)*/
+
+        fetchJson()
     }
 
-    private fun generateDummyList(size: Int): List<ExampleItem> {
+    /*private fun generateDummyList(size: Int): List<ExampleItem> {
         val list = ArrayList<ExampleItem>()
         for (i in 0 until size) {
             val drawable = when (i % 3) {
@@ -35,7 +39,8 @@ class MainActivity : AppCompatActivity() {
             list += item
         }
         return list
-    }
+    }*/
+
     fun fetchJson() {
         println("Attempting to fetch JSON")
 
@@ -52,6 +57,10 @@ class MainActivity : AppCompatActivity() {
                 val gson = GsonBuilder().create()
 
                 val crypto = gson.fromJson(body, Crypto::class.java)
+
+                runOnUiThread{
+                    findViewById<RecyclerView>(R.id.recyclerView_main).adapter = MainAdapter(crypto)
+                }
             }
             override fun onFailure(call: Call, e: IOException) {
                 println("Failed to execute request")

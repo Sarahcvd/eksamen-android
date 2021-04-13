@@ -1,5 +1,6 @@
 package no.kristiania.eksamen_androidprogrammering
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -23,6 +24,11 @@ class ExampleAdapter(private val exampleList: List<ExampleItem>) : RecyclerView.
         holder.imageView.setImageResource(currentItem.imageResource)
         holder.textView1.text = currentItem.text1
         holder.textView2.text = currentItem.text2
+
+        // Eksempel så man ser at kortene blir brukt på nytt
+        if(position == 0){
+            holder.textView1.setBackgroundColor(Color.YELLOW)
+        }
     }
 
     override fun getItemCount() = exampleList.size

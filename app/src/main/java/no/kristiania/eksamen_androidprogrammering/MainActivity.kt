@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         val request = Request.Builder().url(url).build()
         val client = OkHttpClient()
 
-        // kan ikke bruke "execute" i main thread så blir "enqueue"
         client.newCall(request).enqueue(object : Callback {
             override fun onResponse(call: Call, response: Response) {
                 val body = response?.body?.string()

@@ -4,8 +4,10 @@ import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -29,6 +31,10 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
             data?.priceUsd?.toDouble()?.round(2)?.toBigDecimal().toString()
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
             data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString()
+        /* Trying to access crypto symbol imageView and fill it with url-symbols */
+        val imageViewCryptoSymbol = holder?.view?.findViewById<ImageView>(R.id.imageView_crypto_symbol)
+        val cryptoImageUrl = "https://static.coincap.io/assets/icons/btc@2x.png";
+        Picasso.get().load(cryptoImageUrl).into(imageViewCryptoSymbol)
     }
 }
 

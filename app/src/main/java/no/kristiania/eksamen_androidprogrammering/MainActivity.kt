@@ -2,6 +2,8 @@ package no.kristiania.eksamen_androidprogrammering
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.IOException
@@ -12,9 +14,28 @@ class MainActivity : AppCompatActivity() {
         setTheme(R.style.Theme_Eksamen_Androidprogrammering)
         setContentView(R.layout.activity_main)
 
-        fetchJson()
+        val exampleList = generateDummyList(500)
+
+        findViewById<RecyclerView>(R.id.recycler_view).adapter = ExampleAdapter(exampleList)
+        findViewById<RecyclerView>(R.id.recycler_view).layoutManager = LinearLayoutManager(this)
+        findViewById<RecyclerView>(R.id.recycler_view).setHasFixedSize(true)
+
+        //fetchJson()
     }
 
+    private fun generateDummyList(size: Int): List<ExampleItem> {
+        val list = ArrayList<ExampleItem>()
+        for (i in 0 until size) {
+            val drawable = when (i % 3) {
+                0 -> R.drawable.ic_cash
+                1 -> R.drawable.ic_100
+                else -> R.drawable.ic_money_off
+            }
+            val item = ExampleItem(drawable, "Item $i", "Line 2")
+            list += item
+        }
+        return list
+    }
     fun fetchJson() {
         println("Attempting to fetch JSON")
 

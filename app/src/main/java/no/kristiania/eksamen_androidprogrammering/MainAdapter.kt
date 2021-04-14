@@ -1,6 +1,7 @@
 package no.kristiania.eksamen_androidprogrammering
 
 import android.annotation.SuppressLint
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -25,10 +26,18 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
         val data = crypto.data?.get(position)
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_name).text = data?.name
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_symbol).text = data?.symbol
-        holder?.view?.findViewById<TextView>(R.id.textView_crypto_priceUsd).text =
+        holder?.view?.findViewById<TextView>(R.id.textView_crypto_priceUsd).text = "$" +
             data?.priceUsd?.toDouble()?.round(2)?.toBigDecimal().toString()
+        if (data?.changePercent24Hr!! >= "0.00"){
+            holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).setTextColor(
+                Color.GREEN)
+        }else{
+            holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).setTextColor(
+                Color.RED)
+        }
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
-            data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString()
+            data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString() + "%"
+
     }
 }
 

@@ -1,6 +1,7 @@
 package no.kristiania.eksamen_androidprogrammering
 
 import android.annotation.SuppressLint
+import android.content.Intent
 import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
@@ -57,4 +58,16 @@ private fun Double.round(decimals: Int): Double {
 
 class CustomViewHolder(val view: View): RecyclerView.ViewHolder(view){
 
+    init {
+        view.setOnClickListener {
+            val intent = Intent(view.context, BuySellActivity::class.java)
+
+            view.context.startActivity(intent)
+        }
+    }
 }
+
+
+
+
+

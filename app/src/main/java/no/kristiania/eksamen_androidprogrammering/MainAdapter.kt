@@ -5,8 +5,10 @@ import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.squareup.picasso.Picasso
 
 class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -24,6 +26,7 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val data = crypto.data?.get(position)
+        val symbol = crypto.data?.get(position)?.symbol
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_name).text = data?.name
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_symbol).text = data?.symbol
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_priceUsd).text = "$" +
@@ -38,7 +41,12 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
             data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString() + "%"
 
+        val imageViewCryptoSymbol = holder?.view?.findViewById<ImageView>(R.id.imageView)
+        val cryptoImageUrl = "https://static.coincap.io/assets/icons/${symbol?.toLowerCase().toString()}@2x.png"
+        Picasso.get().load(cryptoImageUrl).into(imageViewCryptoSymbol)
+
     }
+
 }
 
 private fun Double.round(decimals: Int): Double {

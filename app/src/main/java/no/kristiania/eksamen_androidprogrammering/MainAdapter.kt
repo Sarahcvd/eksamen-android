@@ -37,6 +37,7 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
         }
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
             data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString() + "%"
+
     }
 }
 

@@ -10,7 +10,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
 
 class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() {
-
     // numberOfItems
     override fun getItemCount(): Int {
         return crypto.data?.count()!!
@@ -24,6 +23,7 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
 
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
+        val symbol = crypto.data?.get(position)?.symbol
         val data = crypto.data?.get(position)
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_name).text = data?.name
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_symbol).text = data?.symbol
@@ -31,9 +31,10 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
             data?.priceUsd?.toDouble()?.round(2)?.toBigDecimal().toString()
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
             data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString()
-        /* Trying to access crypto symbol imageView and fill it with url-symbols */
+
+
         val imageViewCryptoSymbol = holder?.view?.findViewById<ImageView>(R.id.imageView_crypto_symbol)
-        val cryptoImageUrl = "https://static.coincap.io/assets/icons/btc@2x.png";
+        val cryptoImageUrl = "https://static.coincap.io/assets/icons/${symbol?.toLowerCase().toString()}@2x.png";
         Picasso.get().load(cryptoImageUrl).into(imageViewCryptoSymbol)
     }
 }

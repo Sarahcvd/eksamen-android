@@ -2,11 +2,9 @@ package no.kristiania.eksamen_androidprogrammering
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ImageView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
-import com.squareup.picasso.Picasso
 import okhttp3.*
 import java.io.IOException
 
@@ -17,14 +15,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
-
-        /* Trying to load the BTC-icon onto the imageView inside the recyclerView
-
-        val imageView = findViewById<ImageView>(R.id.imageView_crypto_symbol)
-
-        val cryptoImageUrl = "https://static.coincap.io/assets/icons/btc@2x.png";
-
-        Picasso.get().load(cryptoImageUrl).into(imageView) */
 
         fetchJson()
     }

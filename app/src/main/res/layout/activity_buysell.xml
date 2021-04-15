@@ -7,7 +7,7 @@
     android:theme="@style/Theme.Eksamen_Androidprogrammering">
 
     <TextView
-        android:id="@+id/textView_buysell_name"
+        android:id="@+id/textView_buy_name"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -17,11 +17,11 @@
         android:textColor="#000000"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/imageView_buysell"
+        app:layout_constraintStart_toEndOf="@+id/imageView_buy"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView_buysell"
+        android:id="@+id/imageView_buy"
         android:layout_width="86dp"
         android:layout_height="82dp"
         android:layout_marginStart="8dp"
@@ -31,16 +31,16 @@
         app:srcCompat="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/textView_buysell_priceUsd"
+        android:id="@+id/textView_buy_priceUsd"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="priceUsd"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView_buysell_name"
-        app:layout_constraintStart_toStartOf="@+id/textView_buysell_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_buysell_name" />
+        app:layout_constraintEnd_toEndOf="@+id/textView_buy_name"
+        app:layout_constraintStart_toStartOf="@+id/textView_buy_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView_buy_name" />
 
     <TextView
         android:id="@+id/textView_buysell_current_holdings"
@@ -55,10 +55,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_buysell_priceUsd" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_buy_priceUsd" />
 
     <Button
-        android:id="@+id/button_buy"
+        android:id="@+id/button_buysell_buy"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="120dp"
@@ -68,14 +68,14 @@
         app:layout_constraintTop_toBottomOf="@+id/textView_buysell_current_holdings" />
 
     <Button
-        android:id="@+id/button_sell"
+        android:id="@+id/button_buysell_sell"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
         android:layout_marginEnd="8dp"
         android:text="Sell"
-        app:layout_constraintBaseline_toBaselineOf="@+id/button_buy"
+        app:layout_constraintBaseline_toBaselineOf="@+id/button_buysell_buy"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/button_buy" />
+        app:layout_constraintStart_toEndOf="@+id/button_buysell_buy" />
 </androidx.constraintlayout.widget.ConstraintLayout>

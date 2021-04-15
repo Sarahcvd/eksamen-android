@@ -39,6 +39,22 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
         </activity>
+        <activity android:name=".SellActivity"
+            android:label="Sell"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Eksamen_Androidprogrammering">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BuySellActivity" />
+        </activity>
+        <activity android:name=".BuyActivity"
+            android:label="Buy"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Eksamen_Androidprogrammering">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".BuySellActivity"/>
+        </activity>
 
     </application>
 

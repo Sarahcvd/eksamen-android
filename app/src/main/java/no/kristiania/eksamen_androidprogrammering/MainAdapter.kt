@@ -10,6 +10,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import java.text.NumberFormat
+import java.util.*
 
 class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() {
 
@@ -24,20 +26,28 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
         return CustomViewHolder(cellForRow)
     }
 
+    fun formatDollar(dollars: String?): String {
+        val toBeformattedPriceUsd: Double? = dollars?.toDouble() //.toDouble()?.round(2)?.toBigDecimal().toString()
+        val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.US)
+        println(format.format(toBeformattedPriceUsd))
+        return format.format(toBeformattedPriceUsd)
+    }
+
     @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: CustomViewHolder, position: Int) {
         val data = crypto.data?.get(position)
         val symbol = crypto.data?.get(position)?.symbol
+
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_name).text = data?.name
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_symbol).text = data?.symbol
-        holder?.view?.findViewById<TextView>(R.id.textView_crypto_priceUsd).text = "$" +
-            data?.priceUsd?.toDouble()?.round(2)?.toBigDecimal().toString()
+        holder?.view?.findViewById<TextView>(R.id.textView_crypto_priceUsd).text =
+            formatDollar(data?.priceUsd)
         if (data?.changePercent24Hr!! >= "0.00"){
             holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).setTextColor(
-                Color.GREEN)
+                    Color.GREEN)
         }else{
             holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).setTextColor(
-                Color.RED)
+                    Color.RED)
         }
         holder?.view?.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).text =
             data?.changePercent24Hr?.toDouble()?.round(2)?.toBigDecimal().toString() + "%"

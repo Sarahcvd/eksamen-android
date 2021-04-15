@@ -27,6 +27,13 @@
             <meta-data android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity"/>
         </activity>
+        <activity android:name=".Page3"
+            android:label="page 3"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Eksamen_Androidprogrammering">
+            <meta-data android:name="android.support.PARENT_ACTIVITY"
+                android:value=".MainActivity"/>
+        </activity>
     </application>
 
 </manifest>

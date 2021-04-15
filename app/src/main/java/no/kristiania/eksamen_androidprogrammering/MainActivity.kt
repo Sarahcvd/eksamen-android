@@ -1,7 +1,9 @@
 package no.kristiania.eksamen_androidprogrammering
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.TextView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.GsonBuilder
@@ -15,6 +17,12 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
+
+        val pointsHeader = findViewById<TextView>(R.id.textView)
+        pointsHeader.setOnClickListener {
+            val intent = Intent(this, Page3::class.java)
+            startActivity(intent)
+        }
 
         fetchJson()
     }

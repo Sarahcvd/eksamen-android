@@ -8,10 +8,11 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="8dp">
+        android:layout_margin="8dp"
+        android:theme="@style/Theme.Eksamen_Androidprogrammering">
 
         <ImageView
-            android:id="@+id/imageView"
+            android:id="@+id/imageView_crypto"
             android:layout_width="52dp"
             android:layout_height="57dp"
             android:layout_marginStart="8dp"
@@ -32,7 +33,7 @@
             android:textSize="18sp"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView_crypto"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -42,7 +43,7 @@
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:text="Crypto Symbol"
-            app:layout_constraintStart_toEndOf="@+id/imageView"
+            app:layout_constraintStart_toEndOf="@+id/imageView_crypto"
             app:layout_constraintTop_toBottomOf="@+id/textView_crypto_name" />
 
         <TextView

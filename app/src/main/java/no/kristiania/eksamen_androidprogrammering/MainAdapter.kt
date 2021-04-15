@@ -27,9 +27,8 @@ class MainAdapter(val crypto: Crypto): RecyclerView.Adapter<CustomViewHolder>() 
     }
 
     fun formatDollar(dollars: String?): String {
-        val toBeformattedPriceUsd: Double? = dollars?.toDouble() //.toDouble()?.round(2)?.toBigDecimal().toString()
+        val toBeformattedPriceUsd: Double? = dollars?.toDouble()
         val format: NumberFormat = NumberFormat.getCurrencyInstance(Locale.US)
-        println(format.format(toBeformattedPriceUsd))
         return format.format(toBeformattedPriceUsd)
     }
 

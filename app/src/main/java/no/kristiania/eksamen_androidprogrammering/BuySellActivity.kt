@@ -1,45 +1,37 @@
 package no.kristiania.eksamen_androidprogrammering
 
 import android.annotation.SuppressLint
-import android.graphics.Color
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+
 
 class BuySellActivity: AppCompatActivity() {
-    @SuppressLint("CutPasteId")
+    @SuppressLint("CutPasteId", "SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.buy_sell_activity)
 
-        findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
-        findViewById<RecyclerView>(R.id.recyclerView_main).adapter = BuySellAdapter()
+
+        // we'll change the nav bar title
+        val navBarTitle = intent.getStringExtra(CustomViewHolder.CRYPTO_NAME_KEY)
+        val buySellName = intent.getStringExtra(CustomViewHolder.CRYPTO_NAME_KEY)
+        val buySellSymbol = intent.getStringExtra(CustomViewHolder.CRYPTO_SYMBOL_KEY)
+        val buySellPrice = intent.getStringExtra(CustomViewHolder.CRYPTO_PRICE_KEY)?.toDouble()
+            ?.round(2)
+            ?.toBigDecimal().toString()
+
+        supportActionBar?.title = navBarTitle
+        findViewById<TextView>(R.id.textView_buysell_name).text = "$buySellName ($buySellSymbol)"
+        findViewById<TextView>(R.id.textView_buysell_priceUsd).text = "$$buySellPrice"
+        findViewById<TextView>(R.id.textView_buysell_current_holdings).text =
+            "You have 0.00 $buySellSymbol"
     }
 
-    private class BuySellAdapter : RecyclerView.Adapter<BuySellViewHolder>(){
-        override fun getItemCount(): Int {
-            return 2
-        }
-
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BuySellViewHolder {
-
-            val layoutInflater = LayoutInflater.from(parent.context)
-            val customView = layoutInflater.inflate(R.layout.buy_sell_row, parent, false)
-            val intent = null
-            return BuySellViewHolder(customView)
-        }
-
-        override fun onBindViewHolder(holder: BuySellViewHolder, position: Int) {
-
-        }
-    }
-
-    private class BuySellViewHolder(val customView: View): RecyclerView.ViewHolder(customView){
-
+    private fun Double.round(decimals: Int): Double {
+        var multiplier = 1.0
+        repeat(decimals) {multiplier *= 10}
+        return kotlin.math.round(this * multiplier) /multiplier
     }
 }

@@ -59,6 +59,7 @@ class MainAdapter(private val crypto: Crypto): RecyclerView.Adapter<CustomViewHo
 
 }
 
+// Function to shorten decimals
 private fun Double.round(decimals: Int): Double {
     var multiplier = 1.0
     repeat(decimals) {multiplier *= 10}

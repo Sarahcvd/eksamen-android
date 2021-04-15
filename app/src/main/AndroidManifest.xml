@@ -11,7 +11,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/splashScreenTheme">
-        <activity android:name=".TransactionActivity"></activity>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop">
@@ -32,12 +32,20 @@
         </activity>
         <activity
             android:name=".PortfolioActivity"
-            android:label="page 3"
+            android:label="Portfolio Activity"
             android:launchMode="singleTop"
             android:theme="@style/Theme.Eksamen_Androidprogrammering">
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value=".MainActivity" />
+        </activity>
+        <activity android:name=".TransactionActivity"
+            android:label="Transaction activity"
+            android:launchMode="singleTop"
+            android:theme="@style/Theme.Eksamen_Androidprogrammering">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value=".PortfolioActivity" />
         </activity>
 
     </application>

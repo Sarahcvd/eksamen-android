@@ -24,7 +24,7 @@
         android:layout_width="368dp"
         android:layout_height="107dp"
         android:background="@drawable/basic_border"
-        android:padding="30dp"
+        android:padding="20dp"
         android:text="Your total current points are the sum of current value of all your currencies in USD."
 
         android:textAlignment="center"

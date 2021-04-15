@@ -38,8 +38,8 @@ class MainAdapter(private val crypto: Crypto): RecyclerView.Adapter<CustomViewHo
         val symbol: String? = crypto.data?.get(position)?.symbol
         holder.view.findViewById<TextView>(R.id.textView_crypto_name).text = data?.name
         holder.view.findViewById<TextView>(R.id.textView_crypto_symbol).text = data?.symbol
-        holder.view.findViewById<TextView>(R.id.textView_crypto_priceUsd).text = "$" +
-            data?.priceUsd?.toDouble()?.round(2)?.toBigDecimal().toString()
+        holder.view.findViewById<TextView>(R.id.textView_crypto_priceUsd).text =
+            formatDollar(data?.priceUsd)
         if (data?.changePercent24Hr!! >= "0.00"){
             holder.view.findViewById<TextView>(R.id.textView_crypto_changePercent24Hr).setTextColor(
                 Color.GREEN)

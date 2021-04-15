@@ -20,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         val pointsHeader = findViewById<TextView>(R.id.textView)
         pointsHeader.setOnClickListener {
-            val intent = Intent(this, Page3::class.java)
+            val intent = Intent(this, PortfolioActivity::class.java)
             startActivity(intent)
         }
 

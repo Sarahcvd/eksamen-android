@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
-    tools:context=".Page3">
+    tools:context=".PortfolioActivity">
 
     <include
         android:id="@+id/points_header_included"

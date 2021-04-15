@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import androidx.room.Room
 import com.google.gson.GsonBuilder
 import okhttp3.*
 import java.io.IOException
@@ -17,6 +18,16 @@ class MainActivity : AppCompatActivity() {
         findViewById<RecyclerView>(R.id.recyclerView_main).layoutManager = LinearLayoutManager(this)
 
         fetchJson()
+
+        // database
+
+        val db = Room.databaseBuilder(
+                applicationContext,
+                AppDatabase::class.java, "database-name"
+        ).build()
+
+        val userDao = db.userDao()
+        // val users: List<User> = userDao.getAll() // denne får appen til å kræsje
     }
 
 

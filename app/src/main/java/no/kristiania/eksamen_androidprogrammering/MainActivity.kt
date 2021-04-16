@@ -7,8 +7,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.gson.GsonBuilder
-import no.kristiania.eksamen_androidprogrammering.db.AppDatabase
-import no.kristiania.eksamen_androidprogrammering.db.User
+import no.kristiania.eksamen_androidprogrammering.database.DATABASE_NAME
+import no.kristiania.eksamen_androidprogrammering.database.DataBase
+import no.kristiania.eksamen_androidprogrammering.entities.Wallet
 import okhttp3.*
 import java.io.IOException
 
@@ -22,16 +23,19 @@ class MainActivity : AppCompatActivity() {
 
         fetchJson()
 
-//        val db = Room.databaseBuilder(
-//                applicationContext,
-//                AppDatabase::class.java, "database-name"
-//        ).build()
-//
-//        val userDao = db.getUserDao()
-//        val user: User = User(0, "bitcoin", 10.00);
-//        val users: List<User> = userDao.getAll() // denne får appen til å kræsje
-//        println(users);
+        insertToDatabaseAndPrint()
+    }
 
+    suspend fun insertToDatabaseAndPrint() {
+        val db = Room.databaseBuilder(
+                applicationContext,
+                DataBase::class.java, "wallet_database"
+        ).build()
+
+        val walletDao = db.getWalletDAO()
+        val wallet: Wallet = Wallet(0, "bitcoin", 10.00);
+        val users: List<Wallet> = walletDao.fetchAll() // denne får appen til å kræsje
+        println(users);
     }
 
 

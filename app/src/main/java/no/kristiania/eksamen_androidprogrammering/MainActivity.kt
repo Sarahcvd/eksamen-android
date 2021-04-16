@@ -2,10 +2,13 @@ package no.kristiania.eksamen_androidprogrammering
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.os.PersistableBundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.room.Room
 import com.google.gson.GsonBuilder
+import no.kristiania.eksamen_androidprogrammering.db.AppDatabase
+import no.kristiania.eksamen_androidprogrammering.db.User
 import okhttp3.*
 import java.io.IOException
 
@@ -19,15 +22,16 @@ class MainActivity : AppCompatActivity() {
 
         fetchJson()
 
-        // database
+//        val db = Room.databaseBuilder(
+//                applicationContext,
+//                AppDatabase::class.java, "database-name"
+//        ).build()
+//
+//        val userDao = db.getUserDao()
+//        val user: User = User(0, "bitcoin", 10.00);
+//        val users: List<User> = userDao.getAll() // denne får appen til å kræsje
+//        println(users);
 
-        val db = Room.databaseBuilder(
-                applicationContext,
-                AppDatabase::class.java, "database-name"
-        ).build()
-
-        val userDao = db.userDao()
-        // val users: List<User> = userDao.getAll() // denne får appen til å kræsje
     }
 
 
